@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Lock, Star, AlertTriangle, Wifi, WifiOff, Loader2 } from "lucide-react";
-import { formatCurrency, getTimeRemaining, AuctionItem as UIAuctionItem } from "@/data/mockData";
+import { AuctionItem as UIAuctionItem } from "@/types/auction";
+import { formatCurrency, getTimeRemaining } from "@/utils/formatters";
 import CountdownTimer from "@/components/auction/CountdownTimer";
 import SaveButton from "@/components/auction/SaveButton";
 import ItemCard from "@/components/auction/ItemCard";

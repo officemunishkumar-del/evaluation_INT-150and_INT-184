@@ -1,52 +1,5 @@
-export interface AuctionItem {
-  id: string;
-  title: string;
-  category: string;
-  images: string[];
-  estimateLow: number;
-  estimateHigh: number;
-  currentBid: number;
-  bidCount: number;
-  auctioneer: string;
-  auctioneerRating: number;
-  auctioneerReviews: number;
-  endTime: string;
-  lotNumber: string;
-  featured: boolean;
-  currency: string;
-  description: string;
-  conditionReport: string;
-  shippingInfo: string;
-  startingPrice: number;
-}
-
-export interface AuctionHouse {
-  id: string;
-  name: string;
-  logo: string;
-  location: string;
-  rating: number;
-  reviewCount: number;
-}
-
-export interface FeaturedAuction {
-  id: string;
-  title: string;
-  auctioneer: string;
-  date: string;
-  images: string[];
-  lotCount: number;
-  location: string;
-}
-
-export interface SearchCategory {
-  id: string;
-  name: string;
-  icon: string;
-  itemCount: number;
-  followerCount: number;
-  images: string[];
-}
+import { AuctionItem, AuctionHouse, FeaturedAuction, SearchCategory } from "@/types/auction";
+import { formatCurrency, getTimeRemaining } from "@/utils/formatters";
 
 const futureDate = (days: number, hours = 0) => {
   const d = new Date();
@@ -294,25 +247,33 @@ export const auctionItems: AuctionItem[] = [
 
 export const featuredAuctions: FeaturedAuction[] = [
   {
-    id: "fa1", title: "Important Jewels & Timepieces", auctioneer: "Sotheby's",
-    date: "Feb 15, 2026 • 10:00 AM EST", lotCount: 230, location: "New York, NY",
-    images: ["https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=600", "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=300", "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300"]
+    id: "fa1",
+    title: "14.94 ctw Gold Tennis Necklace",
+    category: "Jewelry",
+    description: "A stunning 14.94 carat total weight 14K yellow gold tennis necklace.",
+    auctioneer: "Heritage Auctions",
+    date: "Ends in 2 hours",
+    image: "https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=600",
+    images: ["https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=600"],
+    lotCount: 1,
+    lotNumber: "55551367",
+    estimate: "$14,330 - $16,380",
+    location: "Dallas, TX"
   },
   {
-    id: "fa2", title: "Contemporary Art Evening Sale", auctioneer: "Christie's",
-    date: "Feb 18, 2026 • 7:00 PM EST", lotCount: 85, location: "London, UK",
-    images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600", "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=300", "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300"]
-  },
-  {
-    id: "fa3", title: "Fine Furniture & Decorative Arts", auctioneer: "Bonhams",
-    date: "Feb 20, 2026 • 11:00 AM GMT", lotCount: 340, location: "London, UK",
-    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600", "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300", "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=300"]
-  },
-  {
-    id: "fa4", title: "Asian Art Week", auctioneer: "Phillips",
-    date: "Feb 22, 2026 • 2:00 PM EST", lotCount: 190, location: "Hong Kong",
-    images: ["https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600", "https://images.unsplash.com/photo-1596568362037-5e1e5b845d32?w=300", "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=300"]
-  },
+    id: "fa2",
+    title: "Claude Monet - Water Lilies Study",
+    category: "Art",
+    description: "An exceptional impressionist study of water lilies.",
+    auctioneer: "Sotheby's",
+    date: "Ends in 1 day",
+    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600",
+    images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600"],
+    lotCount: 1,
+    lotNumber: "55551368",
+    estimate: "$45,000 - $65,000",
+    location: "New York, NY"
+  }
 ];
 
 export const searchCategories: SearchCategory[] = [
@@ -321,22 +282,3 @@ export const searchCategories: SearchCategory[] = [
   { id: "sc3", name: "Watches", icon: "⌚", itemCount: 1890, followerCount: 950, images: ["https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=200", "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=200", "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=200"] },
   { id: "sc4", name: "Jewelry", icon: "💎", itemCount: 5200, followerCount: 3400, images: ["https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=200", "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200", "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=200"] },
 ];
-
-export const formatCurrency = (amount: number, currency: string = "$") => {
-  return `${currency}${amount.toLocaleString()}`;
-};
-
-export const getTimeRemaining = (endTime: string) => {
-  const total = new Date(endTime).getTime() - Date.now();
-  if (total <= 0) return { total: 0, days: 0, hours: 0, minutes: 0, seconds: 0, label: "Ended", urgency: "ended" as const };
-  const days = Math.floor(total / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((total / (1000 * 60)) % 60);
-  const seconds = Math.floor((total / 1000) % 60);
-  let label = "";
-  let urgency: "normal" | "warning" | "urgent" | "ended" = "normal";
-  if (days > 0) { label = `${days}d ${hours}h`; }
-  else if (hours > 0) { label = `${hours}h ${minutes}m`; urgency = "warning"; }
-  else { label = `${minutes}m ${seconds}s`; urgency = "urgent"; }
-  return { total, days, hours, minutes, seconds, label, urgency };
-};

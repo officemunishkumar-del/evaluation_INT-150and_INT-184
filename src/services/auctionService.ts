@@ -5,14 +5,7 @@
  */
 
 import { apiRequest } from "./api";
-import { AuctionItem as UIAuctionItem } from "@/data/mockData";
-
-export interface PaginatedResponse<T> {
-    data: T[];
-    total: number;
-    page: number;
-    lastPage: number;
-}
+import { AuctionItem as UIAuctionItem, PaginatedResponse } from "@/types/auction";
 
 /**
  * Fetch all auctions with pagination and status filter

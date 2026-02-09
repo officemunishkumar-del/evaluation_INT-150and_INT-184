@@ -246,6 +246,20 @@ class SocketService {
     }
 
     /**
+     * Join an auction room (alias for subscribeToAuction)
+     */
+    joinAuction(auctionId: string): void {
+        this.subscribeToAuction(auctionId);
+    }
+
+    /**
+     * Leave an auction room (alias for unsubscribeFromAuction)
+     */
+    leaveAuction(auctionId: string): void {
+        this.unsubscribeFromAuction(auctionId);
+    }
+
+    /**
      * Subscribe to an auction room
      */
     subscribeToAuction(auctionId: string): void {

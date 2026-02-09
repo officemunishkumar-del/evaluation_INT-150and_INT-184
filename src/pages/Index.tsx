@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { auctionHouses, featuredAuctions, searchCategories, AuctionItem as UIAuctionItem } from "@/data/mockData";
+import { auctionHouses, featuredAuctions, searchCategories } from "@/data/mockData";
+import { AuctionItem as UIAuctionItem } from "@/types/auction";
 import ItemCard from "@/components/auction/ItemCard";
 import { getAuctions } from "@/services/auctionService";
 

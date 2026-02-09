@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
-import { AuctionItem, formatCurrency, getTimeRemaining } from "@/data/mockData";
+import { AuctionItem } from "@/types/auction";
+import { formatCurrency, getTimeRemaining } from "@/utils/formatters";
 import SaveButton from "./SaveButton";
 
 interface ItemCardProps {
@@ -11,8 +12,8 @@ const ItemCard = ({ item }: ItemCardProps) => {
   const time = getTimeRemaining(item.endTime);
   const colorClass =
     time.urgency === "urgent" ? "text-urgency" :
-    time.urgency === "warning" ? "text-warning" :
-    "text-urgency";
+      time.urgency === "warning" ? "text-warning" :
+        "text-urgency";
 
   return (
     <Link to={`/item/${item.id}`} className="group block">
