@@ -19,8 +19,8 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     }
 
     if (!isAuthenticated) {
-        // Redirect to home with state to open login modal
-        return <Navigate to="/" state={{ from: location, openAuth: true }} replace />;
+        // Redirect to login with state to return back after authentication
+        return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
     return <>{children}</>;

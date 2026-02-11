@@ -4,8 +4,10 @@
  * Includes request timeout, auth headers, JWT expiry check, and auto-logout on 401.
  */
 
-// API base URL - using ngrok for remote connection
-export const API_BASE_URL = "https://subvirile-anglea-unreprovable.ngrok-free.dev/api";
+// API base URL - using dynamic URL based on environment
+export const API_BASE_URL = window.location.hostname === "localhost"
+    ? "http://localhost:3000/api"
+    : "https://subvirile-anglea-unreprovable.ngrok-free.dev/api";
 
 // Token storage key
 const TOKEN_KEY = "livebid_token";

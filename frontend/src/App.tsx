@@ -12,6 +12,7 @@ import SearchPage from "./pages/SearchPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import CreateAuctionPage from "./pages/CreateAuctionPage";
+import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -39,6 +40,8 @@ const App = () => (
                 <Route path="/item/:id" element={<ItemDetailPage />} />
                 <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                 <Route path="/create-auction" element={<ProtectedRoute><CreateAuctionPage /></ProtectedRoute>} />
+                <Route path="/login" element={<AuthPage />} />
+                <Route path="/join" element={<AuthPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Layout>

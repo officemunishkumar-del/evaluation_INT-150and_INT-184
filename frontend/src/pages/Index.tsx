@@ -3,10 +3,12 @@ import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { auctionHouses, featuredAuctions } from "@/data/mockData";
+import { useAuth } from "@/contexts/AuthContext";
 import ItemCard from "@/components/auction/ItemCard";
 import { getAuctions } from "@/services/auctionService";
 
 const HomePage = () => {
+  const { isAuthenticated } = useAuth();
   const [carouselIdx, setCarouselIdx] = useState(0);
   const featured = featuredAuctions[carouselIdx];
 
@@ -35,10 +37,18 @@ const HomePage = () => {
               {featured.description}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/search" className="h-11 px-8 rounded-md bg-primary text-primary-foreground font-semibold text-sm flex items-center hover:bg-primary/90 transition-colors">
+              <Link
+                to={isAuthenticated ? "/search" : "/join"}
+                className="h-11 px-8 rounded-md bg-primary text-primary-foreground font-semibold text-sm flex items-center hover:bg-primary/90 transition-colors"
+                state={!isAuthenticated ? { from: { pathname: "/search" } } : undefined}
+              >
                 Bid Now
               </Link>
-              <Link to="/create-auction" className="h-11 px-8 rounded-md border border-input bg-background text-sm font-semibold hover:bg-muted transition-colors flex items-center">
+              <Link
+                to={isAuthenticated ? "/create-auction" : "/join"}
+                className="h-11 px-8 rounded-md border border-input bg-background text-sm font-semibold hover:bg-muted transition-colors flex items-center"
+                state={!isAuthenticated ? { from: { pathname: "/create-auction" } } : undefined}
+              >
                 Sell Your Item
               </Link>
             </div>
