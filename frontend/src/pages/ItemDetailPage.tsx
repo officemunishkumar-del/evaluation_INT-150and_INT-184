@@ -360,8 +360,8 @@ const ItemDetailPage = () => {
                       {bidOptions.map((amt, i) => (
                         <button
                           key={i}
-                          onClick={() => { setSelectedBid(i); setCustomBidAmount(""); }}
-                          className={`flex-1 h-9 rounded-md border text-sm font-medium transition-colors ${selectedBid === i && !isCustomMode ? "border-primary bg-primary/5 text-primary" : "border-input hover:bg-muted"}`}
+                          onClick={() => { setSelectedBid(i); setCustomBidAmount(amt.toString()); }}
+                          className={`flex-1 h-9 rounded-md border text-sm font-medium transition-colors ${selectedBid === i ? "border-primary bg-primary/5 text-primary" : "border-input hover:bg-muted"}`}
                         >
                           {formatCurrency(amt)}
                         </button>
