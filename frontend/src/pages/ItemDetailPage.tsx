@@ -4,7 +4,6 @@ import { ChevronLeft, Lock, Star, Wifi, WifiOff, Loader2, Search, Home, RefreshC
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { formatCurrency, getTimeRemaining } from "@/utils/formatters";
 import CountdownTimer from "@/components/auction/CountdownTimer";
-import SaveButton from "@/components/auction/SaveButton";
 import BidHistory from "@/components/auction/BidHistory";
 import ViewerCount from "@/components/auction/ViewerCount";
 import StatusBadge from "@/components/auction/StatusBadge";
@@ -311,10 +310,12 @@ const ItemDetailPage = () => {
                   className="w-full h-full object-contain"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
+                    const title = item.title || "Item";
                     target.onerror = null;
-                    target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Crect fill='%23f3f4f6' width='600' height='600'/%3E%3Ctext x='50%25' y='48%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='64' fill='%239ca3af'%3E🖼%3C/text%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='16' fill='%239ca3af'%3EImage unavailable%3C/text%3E%3C/svg%3E";
+                    target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Crect fill='%23f9fafb' width='600' height='600'/%3E%3Ctext x='50%25' y='45%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='64' fill='%23d1d5db'%3E🖼%3C/text%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' font-weight='600' fill='%239ca3af'%3E${encodeURIComponent(title)}%3C/text%3E%3C/svg%3E`;
                   }}
                 />
+
               </div>
             </div>
           </div>
@@ -323,7 +324,7 @@ const ItemDetailPage = () => {
             <div className="border border-border rounded-lg p-5 sticky top-4">
               <div className="flex justify-between items-start mb-3">
                 <h1 className="text-lg font-serif font-bold text-foreground leading-snug">{item.title}</h1>
-                <SaveButton showLabel className="ml-2" />
+
               </div>
 
               <p className="text-sm text-muted-foreground mb-1">

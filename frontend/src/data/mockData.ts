@@ -253,8 +253,8 @@ export const featuredAuctions: FeaturedAuction[] = [
     description: "A stunning 14.94 carat total weight 14K yellow gold tennis necklace.",
     auctioneer: "Heritage Auctions",
     date: "Ends in 2 hours",
-    image: "https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=600",
-    images: ["https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?w=600"],
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800",
+    images: ["https://images.unsplash.com/photo-1515562141589-67f0d569b6f5?auto=format&fit=crop&q=80&w=800"],
     lotCount: 1,
     lotNumber: "55551367",
     estimate: "$14,330 - $16,380",
@@ -267,14 +267,15 @@ export const featuredAuctions: FeaturedAuction[] = [
     description: "An exceptional impressionist study of water lilies.",
     auctioneer: "Sotheby's",
     date: "Ends in 1 day",
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600",
-    images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600"],
+    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800",
+    images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800"],
     lotCount: 1,
     lotNumber: "55551368",
     estimate: "$45,000 - $65,000",
     location: "New York, NY"
   }
 ];
+
 
 export const searchCategories: SearchCategory[] = [
   { id: "sc1", name: "Furniture", icon: "🪑", itemCount: 2450, followerCount: 1200, images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200", "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=200", "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=200"] },
